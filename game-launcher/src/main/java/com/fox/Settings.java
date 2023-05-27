@@ -12,7 +12,7 @@ public class Settings {
     public static final String SAVE_NAME = "Dodian.jar";
     public static final String SAVE_DIR = System.getProperty("user.home") + File.separator;
 
-    public static final String SERVER_IP = "dodian.net";
+    public static final String SERVER_IP = "localhost";
     public static final int SERVER_PORT = 43594;
 
     public static final boolean enableMusicPlayer = false;

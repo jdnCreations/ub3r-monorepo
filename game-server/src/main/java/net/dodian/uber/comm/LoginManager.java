@@ -89,7 +89,7 @@ public class LoginManager {
                         parts[i] = Integer.parseInt(look[i]);
                     p.setLook(parts);
                 }
-                p.latestNews = results.getInt("news"); //Sets the latest news for a user!
+//                p.latestNews = results.getInt("news"); //Sets the latest news for a user!
                 p.UUID = results.getString("uuid");
                 p.moveTo(results.getInt("x"), results.getInt("y"), results.getInt("height"));
                 if (p.getPosition().getX() == -1 || p.getPosition().getY() == -1) {
@@ -103,8 +103,10 @@ public class LoginManager {
                 }
                 /* Set stats */
                 int health = (results.getInt("health"));
-                String prayer = results.getString("prayer").trim();
-                String boosted = results.getString("boosted").trim();
+                String prayer = "1";
+                String boosted = "1";
+//                String prayer = results.getString("prayer").trim();
+//                String boosted = results.getString("boosted").trim();
                 String[] prayer_prase = prayer.split(":");
                 String[] boosted_prase = boosted.split(":");
                 int prayerLevel = !prayer.equals("") ? Integer.parseInt(prayer_prase[0]) : 0;
@@ -278,7 +280,8 @@ public class LoginManager {
                 String newAccount = "INSERT INTO " + DbTables.GAME_CHARACTERS + "(id, name, equipment, inventory, bank, friends, songUnlocked)" + " VALUES ('"
                         + p.dbId + "', '" + playerName + "', '', '', '', '', '0')";
                 statement.executeUpdate(newAccount);
-                String newStatsAccount = "INSERT INTO " + DbTables.GAME_CHARACTERS_STATS + "(uid)" + " VALUES ('" + p.dbId + "') ON CONFLICT (uid) DO NOTHING";
+
+                String newStatsAccount = "INSERT INTO " + DbTables.GAME_CHARACTERS_STATS + "(uid)" + " VALUES ('" + p.dbId + "') ON DUPLICATE (uid) DO NOTHING";
                 statement.executeUpdate(newStatsAccount);
                 statement.close();
                 results.close();

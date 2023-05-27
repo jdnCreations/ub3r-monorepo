@@ -512,6 +512,7 @@ public class ClickObject implements Packet {
                     client.minePick = pickaxe;
                     client.mineIndex = r;
                     client.mining = true;
+                    client.send(new SendMessage("Your pickaxe is: " + pickaxe));
                     client.lastAction = System.currentTimeMillis() + client.getMiningSpeed();
                     client.lastPickAction = System.currentTimeMillis() + 1200;
                     client.requestAnim(client.getMiningEmote(Utils.picks[pickaxe]), 0);

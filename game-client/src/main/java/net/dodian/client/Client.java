@@ -9,6 +9,7 @@ import java.net.Socket;
 import java.net.URI;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.Objects;
 
 import static net.dodian.client.config.Constants.*;
 
@@ -5786,7 +5787,7 @@ public class Client extends RSApplet {
                             characterDisplay.method476(anIntArray1204[0], anIntArray1204[anIntArray990[l2]]);
                     }
                 int staticFrame = myPlayer.anInt1511;
-                characterDisplay.method469();
+                Objects.requireNonNull(characterDisplay).method469();
                 characterDisplay.method470(Animation.anims[staticFrame].anIntArray353[0]);
                 // characterDisplay.method479(64, 850, -30, -50, -30, true);
                 rsInterface.anInt233 = 5;

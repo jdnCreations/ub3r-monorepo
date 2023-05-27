@@ -2295,19 +2295,19 @@ public class Client extends Player implements Runnable {
 			send(new SendMessage("You have " + newPms + " new messages.  Check your inbox at Dodian.net to view them."));
 		}
 		/* Check for refunded items! */
-		try {
-			String query = "SELECT * FROM uber3_refunds WHERE receiver='"+dbId+"' AND message='0' AND claimed IS NULL ORDER BY date ASC";
-			Statement stm = getDbConnection().createStatement(ResultSet.TYPE_FORWARD_ONLY,ResultSet.CONCUR_UPDATABLE);
-			boolean gotResult = stm.executeQuery(query).next();
-			if(gotResult) {
-				send(new SendMessage("<col=4C4B73>You have some unclaimed items to claim!"));
-				stm.executeUpdate("UPDATE uber3_refunds SET message='1' where message='0'");
-			}
-			stm.close();
-		} catch (Exception e) {
-			System.out.println("Error in checking sql!!" + e.getMessage() + ", " + e);
-			e.printStackTrace();
-		}
+//		try {
+//			String query = "SELECT * FROM uber3_refunds WHERE receiver='"+dbId+"' AND message='0' AND claimed IS NULL ORDER BY date ASC";
+//			Statement stm = getDbConnection().createStatement(ResultSet.TYPE_FORWARD_ONLY,ResultSet.CONCUR_UPDATABLE);
+//			boolean gotResult = stm.executeQuery(query).next();
+//			if(gotResult) {
+//				send(new SendMessage("<col=4C4B73>You have some unclaimed items to claim!"));
+//				stm.executeUpdate("UPDATE uber3_refunds SET message='1' where message='0'");
+//			}
+//			stm.close();
+//		} catch (Exception e) {
+//			System.out.println("Error in checking sql!!" + e.getMessage() + ", " + e);
+//			e.printStackTrace();
+//		}
 		loaded = true;
 		PlayerUpdating.getInstance().update(this, getOutputStream());
 		//initialized = true;
